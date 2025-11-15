@@ -18,7 +18,9 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 import os
 
-- - -
+```
+
+---
 
 * yfinance
 : Download historical stock data from Yahoo Finance.

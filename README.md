@@ -7,7 +7,7 @@ This project automates the download, analysis, and visualization of **FAANG stoc
 
 The full code is implemented in the [faang.py](faang.py) script, which downloads data, saves CSV files, and generates plots automatically.
 
-----
+---
 
 ## Libraries Used
 
@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 import os
 
-----
+- - -
 
 * yfinance
 : Download historical stock data from Yahoo Finance.
@@ -33,7 +33,7 @@ Pandas
 
 * os & glob: File system operations for creating folders and retrieving the latest data files.
 
-----
+---
 
 Task 1: Download FAANG Data
 
@@ -43,9 +43,9 @@ Task 1: Download FAANG Data
 
 * Saves each dataset as a timestamped CSV in the data/ folder.
 
-* Example filename: 20251115-083012.csv
+* Example filename: `20251115-083012.csv`
 
-Reference: yfinance documentation [https://pypi.org/project/yfinance/]
+Reference: [yfinance documentation](https://pypi.org/project/yfinance/)
 
 ---
 

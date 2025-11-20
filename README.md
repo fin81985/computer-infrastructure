@@ -1,6 +1,7 @@
 # FAANG Stock Data Analysis
 
 **Module:** Computer Infrastructure 
+
 **Author:** Finian Doonan
 
 This project automates the download, analysis, and visualization of **FAANG stock data** (Facebook/META, Apple, Amazon, Netflix, Google) using Python libraries such as [yfinance](https://pypi.org/project/yfinance/), [Pandas](https://pandas.pydata.org/), and [Matplotlib](https://matplotlib.org/). The goal is to demonstrate data collection, exploration, visualization, and automation.

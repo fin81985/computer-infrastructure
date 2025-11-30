@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -27,9 +29,18 @@ jobs:
         run: |
           python faang_script.py
 
-      - name: Upload generated plots
+      - name: Commit and push plots
+        run: |
+          git config --local user.name "github-actions"
+          git config --local user.email "github-actions@github.com"
+          git add plots/
+          git commit -m "Automated FAANG plots update [skip ci]" || echo "No changes to commit"
+          git push
+
+      - name: Upload generated plots as artifacts
         uses: actions/upload-artifact@v4
         with:
           name: faang-plots
           path: plots/
           retention-days: 30
+

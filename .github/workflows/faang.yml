@@ -2,7 +2,7 @@ name: Run FAANG Script
 
 on:
   schedule:
-    - cron: "0 8 * * 6"     # Every Saturday at 08:00 UTC
+    - cron: "0 8 * * 6"   # Every Saturday at 08:00 UTC
   workflow_dispatch:
 
 jobs:
@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -25,9 +23,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: List files (debug)
+        run: |
+          echo "Repository structure:"
+          ls -R
+
       - name: Run FAANG script
         run: |
-          python faang_script.py
+          python computer-infrastructure/faang_script.py
 
       - name: Commit and push plots
         run: |
@@ -42,5 +45,3 @@ jobs:
         with:
           name: faang-plots
           path: plots/
-          retention-days: 30
-

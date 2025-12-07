@@ -1,9 +1,9 @@
 name: Run FAANG Plot Script
 
 on:
-  workflow_dispatch:    # allow manual runs
   schedule:
-    - cron: '0 12 * * *'   # runs daily at 12:00 UTC (customize as needed)
+    - cron: '0 9 * * SAT'   # Every Saturday at 09:00 UTC
+  workflow_dispatch:        # Optional: allow manual runs
 
 jobs:
   run_script:

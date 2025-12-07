@@ -1,9 +1,5 @@
 # FAANG Stock Data Analysis
 
-[![Python](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/)
-[![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-automated-success)](https://docs.github.com/en/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-
 **Author:** Finian Doonan  
 
 ---

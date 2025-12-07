@@ -1,48 +1,35 @@
-name: Run FAANG Script
+name: Run FAANG Plot Script
 
 on:
+  workflow_dispatch:    # allow manual runs
   schedule:
-    - cron: "0 8 * * 6"
-  workflow_dispatch:
+    - cron: '0 12 * * *'   # runs daily at 12:00 UTC (customize if needed)
 
 jobs:
-  run-faang:
+  run_script:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: '3.10'
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: List files (debug)
-        run: |
-          echo "Repository structure:"
-          ls -R
+          pip install yfinance matplotlib
 
       - name: Run FAANG script
         run: |
-          python https://github.com/fin81985/computer-infrastructure/blob/main/faang_script.py
+          python scripts/faang_script.py
 
-      - name: Commit and push plots
-        run: |
-          git config --local user.name "github-actions"
-          git config --local user.email "github-actions@github.com"
-          git add plots/
-          git commit -m "Automated FAANG plots update [skip ci]" || echo "No changes to commit"
-          git push
-
-      - name: Upload generated plots as artifacts
-        uses: actions/upload-artifact@v4
+      - name: Upload generated plots
+        uses: actions/upload-artifact@v3
         with:
           name: faang-plots
-          path: plots/
+          path: plots/*.png
+
 

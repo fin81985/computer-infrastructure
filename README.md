@@ -23,39 +23,38 @@ It demonstrates:
 - Timestamped CSV storage for version tracking  
 - Line plots of FAANG closing prices in a single figure  
 - Scheduled automated execution with GitHub Actions  
-- Cross-platform support: Windows, macOS, Linux  
 
 ---
 
 ##  Installation
 
-1. Clone the repository:
+### Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/faang-stock-analysis.git
+git clone https://github.com/fin81985/faang-stock-analysis.git
 cd faang-stock-analysis
 ```
 
-Create and activate a virtual environment:
+### Create and activate a virtual environment:
 ````bash
 python -m venv venv
 source venv/bin/activate  # macOS/Linux
 venv\Scripts\activate     # Windows
 ````
 
-Install dependencies:
+### Install dependencies:
 
 ````bash
 pip install -r requirements.txt
 ````
-Quick Start
+### Quick Start
 
 Run the main script to download data and generate plots:
 ````bash
 python faang.py
 ````
 
-Outputs:
+### Outputs:
 
 | Folder | Content                                        |
 | ------ | ---------------------------------------------- |
@@ -63,13 +62,13 @@ Outputs:
 | plots/ | Timestamped line plots of stock closing prices |
 
 
-Example filenames:
+### Example filenames:
 
 * CSV: 20251115-083012.csv
 
 * Plot: 20251115-083245.png
 
- Data Structure
+ ## Data Structure
 
 CSV files include the following columns:
 
@@ -84,7 +83,7 @@ CSV files include the following columns:
 | Ticker    | Stock symbol                      |
 
 
-Visualization Example
+## Visualization Example
 
 ````python
 import matplotlib.pyplot as plt
@@ -105,13 +104,13 @@ plt.legend()
 plt.show()
 ````
 
-Automation with GitHub Actions
+## Automation with GitHub Actions
 
 * Schedule: Every weekday at 16:00 UTC or on push to main
 
 * Workflow: .github/workflows/faang.yml
 
-Tasks automated:
+### Tasks automated:
 
 * Download stock data
 
@@ -123,7 +122,7 @@ Tasks automated:
 
 Learn more about [GitHub Actions](https://docs.github.com/en/actions)
 
-References
+## References
 
 * [yfinance Documentation](https://pypi.org/project/yfinance/)
 

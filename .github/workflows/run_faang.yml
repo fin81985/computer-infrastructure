@@ -7,28 +7,30 @@ on:
 
 jobs:
   run_script:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # platform to run the job
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout repository # checkout the repository code
+        uses: actions/checkout@v4 # version 4 latest not version 3
 
-      - name: Set up Python
+      - name: Set up Python # set up Python environment
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
       - name: Install dependencies
         run: |
-          pip install yfinance matplotlib
+          pip install yfinance matplotlib  
+        # install required packages
 
-      - name: Run FAANG script
+      - name: Run FAANG script # execute the FAANG script
         run: |
-          python scripts/faang_script.py
+          python scripts/faang_script.py 
+        # had issues with script location so created in scripts/faang_script.py
 
-      - name: Upload generated plots
+      - name: Upload generated plots # upload the generated plot images
         uses: actions/upload-artifact@v4
         with:
           name: faang-plots
           path: plots/*.png
-          if-no-files-found: warn
+          if-no-files-found: warn # warn if no plot files are found

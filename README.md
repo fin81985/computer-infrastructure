@@ -12,7 +12,7 @@ It demonstrates:
 - Data collection with [`yfinance`](https://pypi.org/project/yfinance/)  
 - Data manipulation with [`pandas`](https://pandas.pydata.org/)  
 - Visualization with [`matplotlib`](https://matplotlib.org/)  
-- Automation with **GitHub Actions**
+- Automation with [`GitHub Actions`](https://docs.github.com/en/actions)
 
 
 ---

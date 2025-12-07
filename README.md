@@ -1,93 +1,142 @@
 # FAANG Stock Data Analysis
 
-**Module:** Computer Infrastructure 
+[![Python](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/)
+[![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-automated-success)](https://docs.github.com/en/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-**Author:** Finian Doonan
-
-This project automates the download, analysis, and visualization of **FAANG stock data** (Facebook/META, Apple, Amazon, Netflix, Google) using Python libraries such as [yfinance](https://pypi.org/project/yfinance/), [Pandas](https://pandas.pydata.org/), and [Matplotlib](https://matplotlib.org/). The goal is to demonstrate data collection, exploration, visualization, and automation.
-
-The full code is implemented in the [faang.py](faang.py) script, which downloads data, saves CSV files, and generates plots automatically.
+**Author:** Finian Doonan  
 
 ---
 
-## Libraries Used
+##  Project Overview
 
-```python
-import yfinance as yf
-import pandas as pd
+This project automates the download, analysis, and visualization of **FAANG stock data** (Facebook/META, Apple, Amazon, Netflix, Google) using Python.  
+
+It demonstrates:  
+- Data collection with [`yfinance`](https://pypi.org/project/yfinance/)  
+- Data manipulation with [`pandas`](https://pandas.pydata.org/)  
+- Visualization with [`matplotlib`](https://matplotlib.org/)  
+- Automation with **GitHub Actions**
+
+
+---
+
+##  Features
+
+- Automated hourly stock data download for the last 5 days  
+- Timestamped CSV storage for version tracking  
+- Line plots of FAANG closing prices in a single figure  
+- Scheduled automated execution with GitHub Actions  
+- Cross-platform support: Windows, macOS, Linux  
+
+---
+
+##  Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/faang-stock-analysis.git
+cd faang-stock-analysis
+```
+
+Create and activate a virtual environment:
+````bash
+python -m venv venv
+source venv/bin/activate  # macOS/Linux
+venv\Scripts\activate     # Windows
+````
+
+Install dependencies:
+
+````bash
+pip install -r requirements.txt
+````
+Quick Start
+
+Run the main script to download data and generate plots:
+````bash
+python faang.py
+````
+
+Outputs:
+
+| Folder | Content                                        |
+| ------ | ---------------------------------------------- |
+| data/  | Timestamped CSV files of FAANG stock data      |
+| plots/ | Timestamped line plots of stock closing prices |
+
+
+Example filenames:
+
+* CSV: 20251115-083012.csv
+
+* Plot: 20251115-083245.png
+
+ Data Structure
+
+CSV files include the following columns:
+
+| Column    | Description                       |
+| --------- | --------------------------------- |
+| Open      | Opening price of the stock        |
+| High      | Highest price during the interval |
+| Low       | Lowest price during the interval  |
+| Close     | Closing price                     |
+| Adj Close | Adjusted closing price            |
+| Volume    | Number of shares traded           |
+| Ticker    | Stock symbol                      |
+
+
+Visualization Example
+
+````python
 import matplotlib.pyplot as plt
-from datetime import datetime
-import os
+import pandas as pd
 
-```
+df = pd.read_csv("data/20251115-083012.csv", index_col=0, parse_dates=True)
+tickers = ["META", "AAPL", "AMZN", "NFLX", "GOOG"]
 
----
+plt.figure(figsize=(12,6))
+for ticker in tickers:
+    stock_data = df[df['Ticker'] == ticker]
+    plt.plot(stock_data.index, stock_data['Close'], label=ticker)
 
-* yfinance: Download historical stock data from Yahoo Finance.
-
-* Pandas: Data manipulation and analysis library.
-
-* Matplotlib: Plotting library for creating static visualizations.
-
-* datetime: Handles timestamps for file naming.
-
-* os & glob: File system operations for creating folders and retrieving the latest data files.
-
----
-
-## Task 1: Download FAANG Data
-
-* Download hourly stock data for the previous 5 days.
-
-* Stocks: META, AAPL, AMZN, NFLX, GOOG
-
-* Saves each dataset as a timestamped CSV in the data/ folder.
-
-* Example filename: `20251115-083012.csv`
-
-Reference: [yfinance documentation](https://pypi.org/project/yfinance/)
-
----
-
-## Task 2: Explore Data Structure
-
-* Columns in the dataset:
-``Open, High, Low, Close, Adj Close, Volume, Ticker``
-
-* Multiple stocks are combined into one DataFrame for easy plotting.
-
-* CSV files are timestamped for version tracking.
-
-```python
-# Example: Viewing the first 5 rows
-df = pd.read_csv("data/20251115-083012.csv")
-print(df.head())
-
-```
-
----
-
-## Task 3: Visualize Stock Prices
-
-* Created line plots of Close prices for all FAANG stocks in a single figure.
-
-* Axis labels: Date (x-axis), Close Price in USD (y-axis)
-
-* Legend: Stock tickers
-
-* Title includes the date of the plot
-
-* Saves plots as timestamped PNG in the plots/ folder.
-
-* Example filename: 20251115-083245.png
-
-```python
-plt.plot(stock_data.index, stock_data['Close'], label=ticker)
 plt.xlabel("Date")
 plt.ylabel("Close Price (USD)")
-plt.title("FAANG Stock Prices - 2025-11-15")
+plt.title("FAANG Stock Prices")
 plt.legend()
-plt.savefig("plots/20251115-083245.png")
+plt.show()
+````
 
-```
-|Reference: [Matplotlib Line Plot Tutorial](https://matplotlib.org/stable/gallery/lines_bars_and_markers/simple_plot.html)
+Automation with GitHub Actions
+
+* Schedule: Every weekday at 16:00 UTC or on push to main
+
+* Workflow: .github/workflows/faang.yml
+
+Tasks automated:
+
+* Download stock data
+
+* Generate timestamped CSVs
+
+* Create plots
+
+* Upload artifacts
+
+Learn more about [GitHub Actions](https://docs.github.com/en/actions)
+
+References
+
+* [yfinance Documentation](https://pypi.org/project/yfinance/)
+
+* [Matplotlib Documentation](https://matplotlib.org/stable/users/index.html)
+
+* [Pandas Documentation](https://pandas.pydata.org/docs/)
+
+* [GitHub Actions Documentation](https://docs.github.com/en/actions)
+
+* [Python datetime Documentation](https://docs.python.org/3/library/datetime.html)
+
+

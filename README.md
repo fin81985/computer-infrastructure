@@ -108,7 +108,7 @@ plt.show()
 
 * Schedule: Every weekday at 16:00 UTC or on push to main
 
-* Workflow: .github/workflows/faang.yml
+* Workflow: **.github/workflows/faang.yml**
 
 ### Tasks automated:
 

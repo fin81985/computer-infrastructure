@@ -30,7 +30,7 @@ jobs:
 
       - name: Run FAANG script
         run: |
-          python computer-infrastructure/faang_script.py
+          python https://github.com/fin81985/computer-infrastructure/blob/main/faang_script.py
 
       - name: Commit and push plots
         run: |

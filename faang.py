@@ -1,7 +1,11 @@
+#!/usr/bin/env python3 
+
 # Problem 3: Script
 # Author: Finian Doonan
 
-
+import os # https://docs.python.org/3/library/os.html
+import yfinance as yf # https://pypi.org/project/yfinance/
+import matplotlib.pyplot as plt # https://matplotlib.org/stable/index.html
 
 def plot_data():
     """
@@ -9,19 +13,22 @@ def plot_data():
     plots them on a single chart, and saves the plot to the 'plots' folder.
     """
     # Ensure 'plots' directory exists
-    os.makedirs("plots", exist_ok=True)
+    os.makedirs("plots", exist_ok=True) # create plots directory if not exists
+    # https://docs.python.org/3/library/os.html#os.makedirs
     
-     # Define tickers (space-separated string for Tickers)
     
-tickers_str = "MSFT AAPL AMZN NFLX GOOG"
+tickers_str = "MSFT AAPL AMZN NFLX GOOG" # define tickers string
 
 # Fetch data using yfinance
 get_data = yf.Tickers(tickers_str)
 data = get_data.history(period="1mo")  # last month's data 
-close_prices = data['Close']
 
- # Create the plot
-  
+
+close_prices = data['Close'] # extract Close prices
+
+ 
+
+ # Plotting the Close prices using matplotlib 
 plt.figure(figsize=(12, 6))
     
 for ticker in close_prices.columns:
@@ -42,5 +49,5 @@ plt.close()
 
 print(f"Plot saved to {plot_path}")
 
-if __name__ == "__main__":
+if __name__ == "__main__": # https://docs.python.org/3/library/__main__.html
     plot_data()

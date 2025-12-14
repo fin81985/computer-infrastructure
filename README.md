@@ -6,7 +6,7 @@
 
 ##  Project Overview
 
-This project automates the download, analysis, and visualization of **FAANG stock data** (Facebook/META, Apple, Amazon, Netflix, Google) using Python.  
+This project outline in [problems.ipynb](https://github.com/fin81985/computer-infrastructure/blob/main/problems.ipynb) automates the download, analysis, and visualization of **FAANG stock data** (Facebook/META, Apple, Amazon, Netflix, Google) using Python.  
 
 It demonstrates:  
 - Data collection with [`yfinance`](https://pypi.org/project/yfinance/)  
